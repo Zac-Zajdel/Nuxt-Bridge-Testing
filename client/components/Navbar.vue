@@ -9,6 +9,7 @@
             class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-controls="mobile-menu"
             aria-expanded="false"
+            @click="toggleNavbarDropdown"
           >
             <span class="sr-only">Open main menu</span>
             <!--
@@ -18,7 +19,10 @@
 
               Menu open: "hidden", Menu closed: "block"
             -->
-            <icon-bars class="w-6 h-6" />
+            <icon-bars
+              class="w-6 h-6"
+              :class="isNavbarToggled ? 'hidden' : null"
+            />
             <!--
               Icon when menu is open.
 
@@ -27,14 +31,21 @@
               Menu open: "block", Menu closed: "hidden"
             -->
             <client-only>
-              <icon-times class="hidden w-6 h-6" />
+              <icon-times
+                class="w-6 h-6"
+                :class="!isNavbarToggled ? 'hidden' : null"
+              />
             </client-only>
           </button>
         </div>
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
             <h2 class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-300 to-blue-600" />
-            <h2 class="text-lg font-bold tracking-tighter text-white uppercase transition duration-500 ease-in-out transform"> Venture Code </h2>
+            <h2 class="text-lg font-bold tracking-tighter text-white uppercase transition duration-500 ease-in-out transform">
+              <n-link to="/">
+                Venture Code
+              </n-link>
+            </h2>
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
@@ -76,6 +87,7 @@
                 class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 aria-expanded="false"
                 aria-haspopup="true"
+                @click="toggleUserDropdown"
               >
                 <span class="sr-only">Open user menu</span>
                 <img
@@ -97,18 +109,29 @@
                 To: "transform opacity-0 scale-95"
             -->
             <!-- Active: "bg-gray-100", Not Active: "" -->
-            <!-- <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+            <div
+              v-if="isUserToggled"
+              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="user-menu-button"
+              tabindex="-1"
+            >
               <a id="user-menu-item-0" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Your Profile</a>
               <a id="user-menu-item-1" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Settings</a>
               <a id="user-menu-item-2" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Sign out</a>
-            </div> -->
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div id="mobile-menu" class="sm:hidden">
+    <div
+      v-if="isNavbarToggled"
+      id="mobile-menu"
+      class="sm:hidden"
+    >
       <div class="px-2 pt-2 pb-3 space-y-1">
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <n-link
@@ -136,12 +159,29 @@
 
 <script lang="ts">
 import Vue from 'vue'
+// TODO - Add vue-clickaway but make this be a NUXT plugin
 
 export default Vue.extend({
   data () {
     return {
-
+      isUserToggled: false,
+      isNavbarToggled: false,
     }
+  },
+  methods: {
+    /**
+     * @desc Opens dropdown underneath right side navbar
+     */
+    toggleNavbarDropdown () {
+      this.isNavbarToggled = !this.isNavbarToggled
+    },
+
+    /**
+     * @desc Opens dropdown underneath user profile
+     */
+    toggleUserDropdown () {
+      this.isUserToggled = !this.isUserToggled
+    },
   },
 })
 </script>
