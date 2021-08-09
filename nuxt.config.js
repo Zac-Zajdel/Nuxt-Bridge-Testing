@@ -49,18 +49,20 @@ export default {
     '@/components/cards',
   ],
 
+  // TODO - Add this back after initial UI design
   // https://nuxtjs.org/docs/2.x/directory-structure/middleware
-  router: {
-    middleware: ['auth'],
-  },
+  // router: {
+  //   middleware: ['auth'],
+  // },
 
-  auth: {
-    redirect: {
-      login: '/login',
-      logout: '/login',
-      home: '/',
-    },
-  },
+  // TODO - Add this back after initial UI design
+  // auth: {
+  //   redirect: {
+  //     login: '/login',
+  //     logout: '/login',
+  //     home: '/',
+  //   },
+  // },
 
   compilerOptions: {
     types: [

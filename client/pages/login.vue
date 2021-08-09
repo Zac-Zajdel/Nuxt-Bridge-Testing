@@ -82,13 +82,16 @@ import Vue from 'vue'
 
 export default Vue.extend({
   data () {
+    return {}
+  },
+  head () {
     return {
-
+      title: 'Login',
     }
   },
   mounted () {
-    if (this.$auth.loggedIn)
-      this.$router.push('/')
+    // if (this.$auth.loggedIn)
+    //   this.$router.push('/')
   },
 })
 </script>
