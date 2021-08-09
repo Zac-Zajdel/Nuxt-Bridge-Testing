@@ -18,16 +18,7 @@
 
               Menu open: "hidden", Menu closed: "block"
             -->
-            <svg
-              class="block h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <icon-bars class="w-6 h-6" />
             <!--
               Icon when menu is open.
 
@@ -35,16 +26,9 @@
 
               Menu open: "block", Menu closed: "hidden"
             -->
-            <svg
-              class="hidden h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <client-only>
+              <icon-times class="hidden w-6 h-6" />
+            </client-only>
           </button>
         </div>
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -79,7 +63,9 @@
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
             <span class="sr-only">View notifications</span>
-            <icon-bell class="w-6 h-6" />
+            <client-only>
+              <icon-bell class="w-6 h-6" />
+            </client-only>
           </button>
 
           <div class="ml-3 relative">
@@ -92,7 +78,11 @@
                 aria-haspopup="true"
               >
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                >
               </button>
             </div>
 
@@ -123,19 +113,19 @@
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         <n-link
           :to="'/blogs'"
-          class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+          class="block bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Blogs
         </n-link>
         <n-link
           :to="'/snippets'"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          class="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Snippets
         </n-link>
         <n-link
           :to="'/questions'"
-          class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+          class="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
         >
           Code Questions
         </n-link>

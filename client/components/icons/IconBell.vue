@@ -4,7 +4,7 @@
     focusable="false"
     data-prefix="far"
     data-icon="bell"
-    class="svg-inline--fa fa-bell fa-w-14 text-white"
+    class="text-white"
     role="img"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 448 512"
