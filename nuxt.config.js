@@ -39,6 +39,8 @@ export default {
   * https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    // https://github.com/simplesmiler/vue-clickaway
+    '~/plugins/clickAway',
   ],
 
   /**

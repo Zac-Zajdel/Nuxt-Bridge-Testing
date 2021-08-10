@@ -6,7 +6,7 @@
           <div class="relative hidden w-full h-auto bg-white bg-cover border-r rounded-l-lg lg:block lg:w-6/12">
             <div class="relative z-10 m-12 text-left">
               <a class="flex items-center w-38 mb-4 font-medium text-gray-900 title-font md:mb-10">
-                <h2 class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-300 to-blue-600" />
+                <logo />
                 <h2 class="w-full text-lg font-bold tracking-tighter text-black uppercase transition duration-500 ease-in-out transform hover:text-lightBlack-500 dark:text-lightBlue-400"> Venture Code </h2>
               </a>
               <h2 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"> Create an account. </h2>

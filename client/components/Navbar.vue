@@ -2,9 +2,10 @@
   <nav class="bg-gray-800">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
+        <!-- Mobile menu button-->
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
           <button
+            v-on-clickaway="closeNavbarDropdown"
             type="button"
             class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
             aria-controls="mobile-menu"
@@ -12,24 +13,10 @@
             @click="toggleNavbarDropdown"
           >
             <span class="sr-only">Open main menu</span>
-            <!--
-              Icon when menu is closed.
-
-              Heroicon name: outline/menu
-
-              Menu open: "hidden", Menu closed: "block"
-            -->
             <icon-bars
               class="w-6 h-6"
               :class="isNavbarToggled ? 'hidden' : null"
             />
-            <!--
-              Icon when menu is open.
-
-              Heroicon name: outline/x
-
-              Menu open: "block", Menu closed: "hidden"
-            -->
             <client-only>
               <icon-times
                 class="w-6 h-6"
@@ -38,9 +25,11 @@
             </client-only>
           </button>
         </div>
+
+        <!-- User on medium + screens -->
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
-            <h2 class="w-2 h-2 p-2 mr-2 rounded-full bg-gradient-to-tr from-blue-300 to-blue-600" />
+            <logo />
             <h2 class="text-lg font-bold tracking-tighter text-white uppercase transition duration-500 ease-in-out transform">
               <n-link to="/">
                 Venture Code
@@ -49,28 +38,23 @@
           </div>
           <div class="hidden sm:block sm:ml-6">
             <div class="flex space-x-4">
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <n-link
-                :to="'/blogs'"
-                class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+              <span
+                v-for="nav in headerNavigation"
+                :key="nav.name"
               >
-                Blogs
-              </n-link>
-              <n-link
-                :to="'/snippets'"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Snippets
-              </n-link>
-              <n-link
-                :to="'/questions'"
-                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-              >
-                Code Questions
-              </n-link>
+                <n-link
+                  :to="`/${nav.route}`"
+                  class="block px-3 py-2 rounded-md text-sm font-medium"
+                  :class="$route.name === nav.route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'"
+                >
+                  {{ nav.name }}
+                </n-link>
+              </span>
             </div>
           </div>
         </div>
+
+        <!-- Notifications and user profile options -->
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
           <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
             <span class="sr-only">View notifications</span>
@@ -83,6 +67,7 @@
             <div>
               <button
                 id="user-menu-button"
+                v-on-clickaway="closeUserDropdown"
                 type="button"
                 class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 aria-expanded="false"
@@ -98,74 +83,115 @@
               </button>
             </div>
 
-            <!--
-              Dropdown menu, show/hide based on menu state.
-
-              Entering: "transition ease-out duration-100"
-                From: "transform opacity-0 scale-95"
-                To: "transform opacity-100 scale-100"
-              Leaving: "transition ease-in duration-75"
-                From: "transform opacity-100 scale-100"
-                To: "transform opacity-0 scale-95"
-            -->
-            <!-- Active: "bg-gray-100", Not Active: "" -->
-            <div
-              v-if="isUserToggled"
-              class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-              role="menu"
-              aria-orientation="vertical"
-              aria-labelledby="user-menu-button"
-              tabindex="-1"
+            <transition
+              mode="out-in"
+              enter-class="transform -translate-y-1"
+              enter-active-class="transition ease-out duration-200"
+              leave-active-class="ease-in duration-200"
+              leave-to-class="transform -translate-y-1"
             >
-              <a id="user-menu-item-0" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Your Profile</a>
-              <a id="user-menu-item-1" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Settings</a>
-              <a id="user-menu-item-2" href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1">Sign out</a>
-            </div>
+              <div
+                v-if="isUserToggled"
+                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                role="menu"
+                aria-orientation="vertical"
+                aria-labelledby="user-menu-button"
+                tabindex="-1"
+              >
+                <span
+                  v-for="nav in profileNavigation"
+                  :key="nav.name"
+                >
+                  <n-link
+                    :to="`/${nav.route}`"
+                    class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 divide-y divide-y-2"
+                  >
+                    {{ nav.name }}
+                  </n-link>
+                </span>
+              </div>
+            </transition>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Mobile menu, show/hide based on menu state. -->
-    <div
-      v-if="isNavbarToggled"
-      id="mobile-menu"
-      class="sm:hidden"
+    <transition
+      mode="out-in"
+      enter-class="transform -translate-y-1"
+      enter-active-class="transition ease-out duration-200"
+      leave-active-class="ease-in duration-200"
+      leave-to-class="transform -translate-y-1"
     >
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-        <n-link
-          :to="'/blogs'"
-          class="block bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-        >
-          Blogs
-        </n-link>
-        <n-link
-          :to="'/snippets'"
-          class="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-        >
-          Snippets
-        </n-link>
-        <n-link
-          :to="'/questions'"
-          class="block text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-        >
-          Code Questions
-        </n-link>
+      <div
+        v-if="isNavbarToggled"
+        id="mobile-menu"
+        class="sm:hidden"
+      >
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <span
+            v-for="nav in headerNavigation"
+            :key="nav.name"
+          >
+            <n-link
+              :to="`/${nav.route}`"
+              class="block px-3 py-2 rounded-md text-sm font-medium"
+              :class="$route.name === nav.route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'"
+            >
+              {{ nav.name }}
+            </n-link>
+          </span>
+        </div>
       </div>
-    </div>
+    </transition>
   </nav>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
-// TODO - Add vue-clickaway but make this be a NUXT plugin
+
+interface route {
+  name: string
+  route: string
+}
+type routes = Array<route>
 
 export default Vue.extend({
   data () {
     return {
       isUserToggled: false,
       isNavbarToggled: false,
+      headerNavigation: [
+        {
+          name: 'Blogs',
+          route: 'blogs',
+        },
+        {
+          name: 'Snippets',
+          route: 'snippets',
+        },
+        {
+          name: 'Code Questions',
+          route: 'questions',
+        },
+      ] as routes,
+
+      profileNavigation: [
+        {
+          name: 'Profile',
+          route: 'profile',
+        },
+        {
+          name: 'Settings',
+          route: 'settings',
+        },
+        {
+          name: 'Logout',
+          route: 'logout',
+        },
+      ] as routes,
+
     }
   },
   methods: {
@@ -177,10 +203,24 @@ export default Vue.extend({
     },
 
     /**
+     * @desc Used to close navbar dropdown with v-on-clickaway directive
+     */
+    closeNavbarDropdown () {
+      this.isNavbarToggled = false
+    },
+
+    /**
      * @desc Opens dropdown underneath user profile
      */
     toggleUserDropdown () {
       this.isUserToggled = !this.isUserToggled
+    },
+
+    /**
+     * @desc Used to close user dropdown with v-on-clickaway directive
+     */
+    closeUserDropdown () {
+      this.isUserToggled = false
     },
   },
 })
