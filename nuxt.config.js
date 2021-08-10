@@ -1,23 +1,23 @@
 
 export default {
-  /*
-  ** Nuxt.js root directory
-  ** See https://nuxtjs.org/api/configuration-srcdir/
+  /**
+  * Nuxt.js root directory
+  * See https://nuxtjs.org/api/configuration-srcdir/
   */
   srcDir: 'client/',
 
-  /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
+  /**
+  * Nuxt target
+  * See https://nuxtjs.org/api/configuration-target
   */
   target: 'server',
 
-  /*
-  ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
+  /**
+  * Headers of the page
+  * See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Venture Code',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -27,40 +27,46 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
   },
-  /*
-  ** Global CSS
+
+  /**
+  * Global CSS
   */
   css: [
   ],
 
-  /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
+  /**
+  * Plugins to load before mounting the App
+  * https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    // https://github.com/simplesmiler/vue-clickaway
+    '~/plugins/clickAway',
   ],
 
-  /*
-  ** Auto import components
-  ** See https://nuxtjs.org/api/configuration-components
+  /**
+  * Auto import components
+  * See https://nuxtjs.org/api/configuration-components
   */
   components: [
     '@/components',
     '@/components/cards',
+    '@/components/icons',
   ],
 
+  // TODO - Add this back after initial UI design
   // https://nuxtjs.org/docs/2.x/directory-structure/middleware
-  router: {
-    middleware: ['auth'],
-  },
+  // router: {
+  //   middleware: ['auth'],
+  // },
 
-  auth: {
-    redirect: {
-      login: '/login',
-      logout: '/login',
-      home: '/',
-    },
-  },
+  // TODO - Add this back after initial UI design
+  // auth: {
+  //   redirect: {
+  //     login: '/login',
+  //     logout: '/login',
+  //     home: '/',
+  //   },
+  // },
 
   compilerOptions: {
     types: [
@@ -68,8 +74,8 @@ export default {
     ],
   },
 
-  /*
-  ** Nuxt.js dev-modules
+  /**
+  * Nuxt.js dev-modules
   */
   buildModules: [
     // https://tailwindcss.nuxtjs.org/
@@ -89,8 +95,8 @@ export default {
     mode: 'jit',
   },
 
-  /*
-  ** Nuxt.js modules
+  /**
+  * Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
@@ -98,14 +104,11 @@ export default {
 
     // Doc: https://github.com/nuxt-community/auth-module
     '@nuxtjs/auth-next',
-
-    // Doc: https://github.com/acidjazz/nuxt-tailvue
-    ['nuxt-tailvue', { all: true }],
   ],
 
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
+  /**
+  * Axios module configuration
+  * See https://axios.nuxtjs.org/options
   */
   axios: {
     credentials: true,
@@ -115,16 +118,16 @@ export default {
     },
   },
 
-  /*
-  ** Build configuration
-  ** See https://nuxtjs.org/api/configuration-build/
+  /**
+  * Build configuration
+  * See https://nuxtjs.org/api/configuration-build/
   */
   build: {
   },
 
-  /*
-  ** Runtime Config
-  ** See https://nuxtjs.org/guide/runtime-config/
+  /**
+  * Runtime Config
+  * See https://nuxtjs.org/guide/runtime-config/
   */
   publicRuntimeConfig: {
     apiUrl: process.env.API_URL,
