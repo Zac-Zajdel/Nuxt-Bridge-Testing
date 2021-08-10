@@ -86,8 +86,8 @@
             <transition
               mode="out-in"
               enter-class="transform -translate-y-1"
-              enter-active-class="transition ease-out duration-200"
-              leave-active-class="ease-in duration-200"
+              enter-active-class="transition ease-out duration-150"
+              leave-active-class="ease-in duration-100"
               leave-to-class="transform -translate-y-1"
             >
               <div
@@ -120,8 +120,8 @@
     <transition
       mode="out-in"
       enter-class="transform -translate-y-1"
-      enter-active-class="transition ease-out duration-200"
-      leave-active-class="ease-in duration-200"
+      enter-active-class="transition ease-out duration-150"
+      leave-active-class="ease-in duration-100"
       leave-to-class="transform -translate-y-1"
     >
       <div
