@@ -66,7 +66,13 @@
                     <input id="confirm" class="block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500 " type="text" placeholder="Confirm">
                   </div>
                 </div>
-                <button type="submit" class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black">Log In</button>
+                <button
+                  type="submit"
+                  class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black"
+                  @click.prevent="login"
+                >
+                  Log In
+                </button>
               </form>
               <p class="mt-8 text-center">Already have an account? <a href="#" class="font-semibold text-black hover:text-black">Sign In</a></p>
             </div>
@@ -82,7 +88,9 @@ import Vue from 'vue'
 
 export default Vue.extend({
   data () {
-    return {}
+    return {
+      credentials: {},
+    }
   },
   head () {
     return {
@@ -90,8 +98,22 @@ export default Vue.extend({
     }
   },
   mounted () {
-    // if (this.$auth.loggedIn)
-    //   this.$router.push('/')
+    console.log(this.$auth)
+    if (this.$auth.loggedIn)
+      this.$router.push('/')
+  },
+  methods: {
+    login () {
+      console.log('hello world')
+      // await this.$axios.get('http://localhost:8000/sanctum/csrf-cookie')
+
+      this.$auth.loginWith('laravelSanctum', {
+        data: {
+          email: 'zaczajdel213@gmail.com',
+          password: 'password',
+        },
+      })
+    },
   },
 })
 </script>

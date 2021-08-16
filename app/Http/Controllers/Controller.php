@@ -61,9 +61,4 @@ class Controller extends BaseController
 
         return $this->render($users);
     }
-
-    public function error(): Response|JsonResponse
-    {
-        return $this->render(['forced_error' => $forced_error]);
-    }
 }
