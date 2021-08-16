@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Controller::class, 'routes'])
     ->name('route information')
     ->withoutMiddleware('api');
-Route::get('/example', [Controller::class, 'example'])->name('example route');
-Route::get('/error', [Controller::class, 'error'])->name('error route');
+
+Route::middleware('auth:sanctum')->get('/api/user', function (Request $request) {
+  return $request->user();
+});
+
+Route::post('/api/login', [LoginController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group( function () {
+  Route::get('/api/users', [Controller::class, 'example'])->name('example route');
+});

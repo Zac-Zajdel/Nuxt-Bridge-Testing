@@ -53,20 +53,32 @@ export default {
     '@/components/icons',
   ],
 
-  // TODO - Add this back after initial UI design
-  // https://nuxtjs.org/docs/2.x/directory-structure/middleware
-  // router: {
-  //   middleware: ['auth'],
-  // },
+  /**
+   * https://nuxtjs.org/docs/2.x/directory-structure/middleware
+   */
+  router: {
+    middleware: ['auth'],
+  },
 
-  // TODO - Add this back after initial UI design
-  // auth: {
-  //   redirect: {
-  //     login: '/login',
-  //     logout: '/login',
-  //     home: '/',
-  //   },
-  // },
+  // https://auth.nuxtjs.org/providers/laravel-sanctum
+  auth: {
+    strategies: {
+      laravelSanctum: {
+        provider: 'laravel/sanctum',
+        url: 'http://localhost:8000',
+        endpoints: {
+          login: {
+            url: '/api/login',
+          },
+        },
+      },
+    },
+    redirect: {
+      login: '/login',
+      logout: '/login',
+      home: '/',
+    },
+  },
 
   compilerOptions: {
     types: [
