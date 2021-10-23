@@ -29,6 +29,8 @@
       "@nuxt/types",
       "@nuxtjs/axios",
       "@nuxtjs/auth-next",
+      "nuxt-tailvue",
+      "@nuxtjs/color-mode",
     ]
   },
   "exclude": [

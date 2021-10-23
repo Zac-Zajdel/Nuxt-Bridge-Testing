@@ -1,67 +1,64 @@
 <template>
-  <section class="flex flex-col items-center md:flex-row mt-40">
-    <div class="container mx-auto">
-      <div class="flex justify-center px-2 py-6">
-        <div class="flex w-full rounded-lg xl:w-3/4 lg:w-11/12 lg:shadow-xl">
-          <div class="relative hidden w-full h-auto bg-white bg-cover border-r rounded-l-lg lg:block lg:w-6/12">
-            <div class="relative z-10 m-12 text-left">
-              <a class="flex items-center w-38 mb-4 font-medium text-gray-900 title-font md:mb-10">
-                <logo />
-                <h2 class="w-full text-lg font-bold tracking-tighter text-black uppercase transition duration-500 ease-in-out transform hover:text-lightBlack-500 dark:text-lightBlue-400"> Venture Code </h2>
-              </a>
-              <h2 class="mt-12 mb-2 text-2xl font-semibold tracking-tighter text-black sm:text-3xl title-font"> Create an account. </h2>
-              <div class="mt-16 mb-8 text-base leading-relaxed text-gray-900 sm:md:w-3/3 lg:text-1xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              </div>
-            </div>
+  <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+      <div>
+        <span class="flex justify-center">
+          <logo />
+        </span>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Sign in to Venture Code
+        </h2>
+      </div>
+      <div class="mt-8 space-y-6">
+        <!-- <input type="hidden" name="remember" value="true"> -->
+        <div class="rounded-md shadow-sm -space-y-px">
+          <div>
+            <label for="email-address" class="sr-only">Email address</label>
+            <input
+              id="email-address"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Email address"
+            >
           </div>
-          <div class="w-full px-8 py-24 bg-white rounded-lg border-gray-100 lg:w-8/12 lg:px-24 lg:py-4 lg:rounded-l-none">
-            <div class="relative z-10 text-left ">
-              <form class="mt-6" action="#" method="POST">
-                <div>
-                  <label class="block text-base font-medium leading-relaxed text-gray-700">User Name</label>
-                  <input id="" type="text" name="" placeholder="Your User Name " class="w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500">
-                </div>
-                <div class="mt-4">
-                  <label class="block text-base font-medium leading-relaxed text-gray-700">Email Address</label>
-                  <input
-                    id=""
-                    type="email"
-                    name=""
-                    placeholder="Your Email "
-                    class="w-full px-4 py-2 mt-2 text-base transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500"
-                    autocomplete=""
-                    required=""
-                  >
-                </div>
-                <div class="flex flex-wrap mt-4 mb-6 -mx-3">
-                  <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
-                    <label class="text-base font-medium leading-relaxed text-gray-700" for="password" minlength="6"> Password </label>
-                    <input id="password" class="block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500" type="text" placeholder="Your Password">
-                    <p class="mt-1 text-xs italic text-black">Please fill out this field.</p>
-                  </div>
-                  <div class="w-full px-3 md:w-1/2">
-                    <label class="text-base font-medium leading-relaxed text-gray-700" for="confirm"> Confirm </label>
-                    <input id="confirm" class="block w-full px-4 py-2 mt-2 text-base text-black transition duration-500 ease-in-out transform border-transparent rounded-lg bg-gray-100 focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 ext-black focus:border-gray-500 " type="text" placeholder="Confirm">
-                  </div>
-                </div>
-                <button
-                  type="submit"
-                  class="block w-full px-4 py-3 mt-6 font-semibold text-white transition duration-500 ease-in-out transform rounded-lg bg-gradient-to-r from-black hover:from-black to-black focus:outline-none focus:shadow-outline focus:ring-2 ring-offset-current ring-offset-2 hover:to-black"
-                  @click.prevent="login"
-                >
-                  Log In
-                </button>
-              </form>
-              <p class="mt-8 text-center">Already have an account? <a href="#" class="font-semibold text-black hover:text-black">Sign In</a></p>
-            </div>
+          <div>
+            <label for="password" class="sr-only">Password</label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              required
+              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+              placeholder="Password"
+            >
           </div>
+        </div>
+
+        <div class="flex items-center justify-end">
+          <div class="text-sm">
+            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+              Forgot your password?
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <button class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+              <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            Sign in
+          </button>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -79,7 +76,7 @@ export default Vue.extend({
     }
   },
   mounted () {
-    console.log(this.$auth)
+    this.$toast.show('Hello world')
     if (this.$auth.loggedIn)
       this.$router.push('/')
   },

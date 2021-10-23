@@ -101,6 +101,9 @@ export default {
 
     // https://typed-vuex.roe.dev/
     'nuxt-typed-vuex',
+
+    // https://color-mode.nuxtjs.org/
+    '@nuxtjs/color-mode',
   ],
 
   tailwindcss: {
@@ -116,6 +119,9 @@ export default {
 
     // Doc: https://github.com/nuxt-community/auth-module
     '@nuxtjs/auth-next',
+
+    // Doc: https://github.com/acidjazz/nuxt-tailvue
+    ['nuxt-tailvue', { all: true }],
   ],
 
   /**
