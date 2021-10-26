@@ -21,11 +21,11 @@ Route::get('/', [Controller::class, 'routes'])
     ->withoutMiddleware('api');
 
 Route::middleware('auth:sanctum')->get('/api/user', function (Request $request) {
-  return $request->user();
+    return $request->user();
 });
 
 Route::post('/api/login', [LoginController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group( function () {
-  Route::get('/api/users', [Controller::class, 'example'])->name('example route');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/api/users', [Controller::class, 'example'])->name('example route');
 });
