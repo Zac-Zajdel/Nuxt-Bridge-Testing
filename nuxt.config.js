@@ -104,6 +104,19 @@ export default {
 
     // https://color-mode.nuxtjs.org/
     '@nuxtjs/color-mode',
+
+    // https://github.com/antfu/unplugin-auto-import
+    [
+      'unplugin-auto-import/nuxt',
+      {
+        dts: 'client/types/auto-imports.d.ts',
+        imports: [
+          '@vueuse/core',
+          '@nuxtjs/composition-api',
+        ],
+        presetOverriding: true,
+      },
+    ],
   ],
 
   tailwindcss: {

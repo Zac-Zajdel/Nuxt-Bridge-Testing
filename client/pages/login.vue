@@ -64,34 +64,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script lang="ts" setup>
 
-export default Vue.extend({
-  data () {
-    return {
-      credentials: {},
-    }
-  },
-  head () {
-    return {
-      title: 'Login',
-    }
-  },
-  mounted () {
-    this.$toast.show('Hello world')
-    if (this.$auth.loggedIn)
-      this.$router.push('/')
-  },
-  methods: {
-    login () {
-      this.$auth.loginWith('laravelSanctum', {
-        data: {
-          email: 'zaczajdel213@gmail.com',
-          password: 'password',
-        },
-      })
-    },
-  },
+const { $auth } = useContext()
+const $router = useRouter()
+
+onMounted(() => {
+  if ($auth.loggedIn)
+    $router.push('/')
 })
+
+function login () {
+  $auth.loginWith('laravelSanctum', {
+    data: {
+      email: 'zaczajdel213@gmail.com',
+      password: 'password',
+    },
+  })
+}
 </script>
