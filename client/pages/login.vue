@@ -10,12 +10,12 @@
         </h2>
       </div>
       <div class="mt-8 space-y-6">
-        <!-- <input type="hidden" name="remember" value="true"> -->
         <div class="rounded-md shadow-sm -space-y-px">
           <div>
             <label for="email-address" class="sr-only">Email address</label>
             <input
               id="email-address"
+              v-model="userLogin.email"
               name="email"
               type="email"
               autocomplete="email"
@@ -28,6 +28,7 @@
             <label for="password" class="sr-only">Password</label>
             <input
               id="password"
+              v-model="userLogin.password"
               name="password"
               type="password"
               autocomplete="current-password"
@@ -37,24 +38,15 @@
             >
           </div>
         </div>
-
-        <div class="flex items-center justify-end">
-          <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
-              Forgot your password?
-            </a>
-          </div>
-        </div>
-
         <div>
           <button
             class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             @click="login"
           >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
-              </svg>
+              <icon-user-lock
+                class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+              />
             </span>
             Sign in
           </button>
@@ -65,20 +57,26 @@
 </template>
 
 <script lang="ts" setup>
-
 const { $auth } = useContext()
 const $router = useRouter()
+const userLogin = ref({
+  email: '',
+  password: '',
+})
 
 onMounted(() => {
   if ($auth.loggedIn)
     $router.push('/')
 })
 
+/**
+ * @desc Logs in user with an email and password
+ */
 function login () {
   $auth.loginWith('laravelSanctum', {
     data: {
-      email: 'zaczajdel213@gmail.com',
-      password: 'password',
+      email: userLogin.value.email,
+      password: userLogin.value.password,
     },
   })
 }
