@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Http\Request;
 
 /*
@@ -28,4 +29,7 @@ Route::post('/api/login', [LoginController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/api/users', [Controller::class, 'example'])->name('example route');
+
+    // BlogController
+    Route::apiResource('/user/{user}/blogs/', BlogController::class);
 });
