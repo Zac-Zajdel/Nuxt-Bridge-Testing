@@ -67,12 +67,5 @@
 </template>
 
 <script lang="ts" setup>
-const { $auth } = useContext()
-const $router = useRouter()
-
-onMounted(() => {
-  if ($auth.loggedIn)
-    $router.push('/')
-})
 
 </script>

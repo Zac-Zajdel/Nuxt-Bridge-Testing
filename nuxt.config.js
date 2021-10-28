@@ -51,6 +51,7 @@ export default {
     '@/components',
     '@/components/cards',
     '@/components/icons',
+    '@/components/table',
   ],
 
   /**
