@@ -25,5 +25,19 @@ export interface User {
   phone: string
   avatar: string
 }
-
 export type Users = Array<User>
+
+export interface Blog {
+  id: number
+  title: string
+  user_id: number
+  body: string
+  published_at: Date|null
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date|null
+
+  // relationships
+  user?: Object
+}
+export type Blogs = Array<Blog>

@@ -12,11 +12,13 @@ class Blog extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $casts = ['body' => AsArrayObject::class];
+    protected $casts = [
+        'body' => AsArrayObject::class,
+    ];
 
     /**
      * Finds associated creator of blog
-     * 
+     *
      * @return BelongsTo
      */
     public function user(): BelongsTo

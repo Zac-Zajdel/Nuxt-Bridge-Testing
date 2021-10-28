@@ -57,6 +57,7 @@
 </template>
 
 <script lang="ts" setup>
+export {}
 const { $auth } = useContext()
 const $router = useRouter()
 const userLogin = ref({

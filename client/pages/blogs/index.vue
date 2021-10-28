@@ -1,19 +1,28 @@
 <template>
   <page-wrapper>
-    <card
-      title="Hello world Title section"
-      description="In this tutorial I will show you how to create simple modals in Tailwind CSS. This utility-based framework allows you to..."
-      @select="select"
-    />
+    <div
+      v-for="(blog, index) in blogs"
+      :key="index"
+      class="py-3"
+    >
+      <card
+        :title="blog.title"
+        description="In this tutorial I will show you how to create simple modals in Tailwind CSS. This utility-based framework allows you to..."
+        @select="select"
+      />
+    </div>
   </page-wrapper>
 </template>
 
 <script lang="ts" setup>
-const { $auth, $axios } = useContext()
+import { Blogs } from '@/types/api'
 
-onMounted(() => {
-  const value = $axios.get(`/user/${$auth.user?.id}/blog`)
-  console.log('Value: ', value)
+const { $auth, $axios } = useContext()
+const blogs = ref<Blogs|undefined>(undefined)
+
+onMounted(async () => {
+  blogs.value = (await $axios.get(`/user/${$auth.user?.id}/blog`)).data.data
+  console.log('Value: ', blogs.value)
 })
 
 function select () {

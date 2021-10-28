@@ -6,7 +6,7 @@ use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Http\Response;
 
 class BlogController extends Controller
 {
@@ -17,12 +17,9 @@ class BlogController extends Controller
      */
     public function index(User $user): Response | JsonResponse
     {
-        return $this->success('Hello world');
-        $this->authorize('view', Blog::class);
-
         return $this->render(
             $this->paginate(
-                Blog::all(),
+                Blog::with('user'),
                 10,
             )
         );

@@ -41,7 +41,7 @@ class User extends Authenticatable
 
     /**
      * Retrieve all blogs associated to a user
-     * 
+     *
      * @return HasMany
      */
     public function blogs(): HasMany
