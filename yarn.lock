@@ -11472,15 +11472,7 @@ tv-icon@^1.0.1, tv-icon@latest:
   resolved "https://registry.yarnpkg.com/tv-icon/-/tv-icon-1.0.24.tgz#c952c8ac9277f1ace7bc128229d3b81a27306787"
   integrity sha512-2tAaWWmGrjjwEPJjMBVAZBXvWuA2jpoYmCu5ipbaLVE0v9ve3gnT0EBjb8LtJn7f4BjySkcFlOqWPg0hzVN46Q==
 
-tv-modal@1.0.22:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/tv-modal/-/tv-modal-1.0.22.tgz#9b5d34e7a83679bc2ef54375198b5e4487501c91"
-  integrity sha512-IrHwJ/QV4/POvTd8Opviml8KwrkKKRlJhCdlFb/Oyt0023qwStq1ctSej1xpbiFzNzBuKbT76RshaX5oEW+L8g==
-  dependencies:
-    tv-button "^1.0.7"
-    tv-icon "^1.0.1"
-
-tv-modal@latest:
+tv-modal@1.0.24, tv-modal@latest:
   version "1.0.24"
   resolved "https://registry.yarnpkg.com/tv-modal/-/tv-modal-1.0.24.tgz#dce88d4c197909856e1fa376fb63439b4c7686bd"
   integrity sha512-4DA2f9XpB9GP3+XsH1e1rBQcvMI6CJkC5rTeCVgfhZz2NMUtTlz0mO71VJlB8KYzWSi4QoYOBtqBk2TLZ+fewQ==

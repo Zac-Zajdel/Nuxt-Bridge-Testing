@@ -23,7 +23,7 @@
     "nuxt": "^2.15.7",
     "nuxt-tailvue": "^1.0.95",
     "tv-button": "1.0.25",
-    "tv-modal": "1.0.22",
+    "tv-modal": "1.0.24",
     "vue-clickaway": "^2.2.2"
   },
   "devDependencies": {
