@@ -23,9 +23,8 @@ class BlogFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
-            'body' => [
-                'value' => $this->faker->paragraph(5),
-            ]
+            'body' => $this->faker->paragraph(5), 
+            'draft' => $this->faker->boolean(50),
         ];
     }
 }

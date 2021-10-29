@@ -17,8 +17,9 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('title');
             $table->foreignId('user_id')->constrained();
-            $table->json('body')->nullable();
-            $table->timestamp('published_at')->nullable();
+            $table->text('body')->nullable();
+            $table->boolean('draft')->default(true);
+            $table->date('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

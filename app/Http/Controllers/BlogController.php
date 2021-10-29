@@ -19,7 +19,7 @@ class BlogController extends Controller
     {
         return $this->render(
             $this->paginate(
-                Blog::with('user'),
+                Blog::with('user')->orderByDesc('id'),
                 10,
             )
         );
@@ -28,12 +28,20 @@ class BlogController extends Controller
     /**
      * Creates a new blog
      *
-     * @param Request $request
+     * @param User $user
      * @return Response|JsonResponse
      */
-    public function store(Request $request): Response | JsonResponse
+    public function store(User $user): Response | JsonResponse
     {
-        return $this->success('Hello world');
+        // Create new Blog
+        $blog = new Blog();
+        $blog->title = 'New Blog';
+        $blog->user_id = $user->id;
+        $blog->body = '';
+        $blog->draft = true;
+        $blog->save();
+
+        return $this->success('blog.created');
     }
 
     /**
@@ -60,7 +68,24 @@ class BlogController extends Controller
      */
     public function update(Request $request, User $user, Blog $blog): Response | JsonResponse
     {
-        return $this->success('Responded');
+        $this->authorize('update', $blog);
+
+        $this
+            ->option('title', 'required|string|max:255')
+            ->option('body', 'required|string')
+            ->option('draft', 'required|boolean')
+            ->option('published_at', 'nullable|date')
+            ->verify();
+
+        // Update Blog
+        $blog->user_id = auth()->user()->id;
+        $blog->title = $request->title;
+        $blog->body = $request->body;
+        $blog->draft = $request->draft;
+        $blog->published_at = !$request->draft ? now() : null;
+        $blog->save();
+
+        return $this->success('blog.updated', ['name' => $blog->name]);
     }
 
     /**
@@ -72,6 +97,11 @@ class BlogController extends Controller
      */
     public function destroy(User $user, Blog $blog): Response | JsonResponse
     {
-        return $this->success('Destroy');
+        $this->authorize('update', $blog);
+
+        $name = $blog->name;
+        $blog->delete();
+
+        return $this->success('blog.deleted', ['name' => $name]);
     }
 }
