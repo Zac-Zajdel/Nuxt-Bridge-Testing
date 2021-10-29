@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-gray-800">
+  <nav style="background-color: #222629;">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <!-- Mobile menu button-->
@@ -45,7 +45,7 @@
                 <n-link
                   :to="`/${nav.route}`"
                   class="block px-3 py-2 rounded-md text-sm font-medium"
-                  :class="$route.name === nav.route ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'"
+                  :class="$route.name === nav.route ? 'bg-gray-600 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white'"
                 >
                   {{ nav.name }}
                 </n-link>
@@ -56,7 +56,7 @@
 
         <!-- Notifications and user profile options -->
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+          <button class="p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
             <span class="sr-only">View notifications</span>
             <client-only>
               <icon-bell class="w-6 h-6" />

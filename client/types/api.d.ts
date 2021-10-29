@@ -20,10 +20,25 @@ export interface MetApiResponse {
 
 export interface User {
   name: string
-  job: string
   email: string
-  phone: string
-  avatar: string
+  email_vertified_at: Date
+  password: string
 }
-
 export type Users = Array<User>
+
+export interface Blog {
+  id: number
+  title: string
+  user_id: number
+  body: {
+    value: string
+  }
+  published_at: Date|null
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date|null
+
+  // relationships
+  user: User
+}
+export type Blogs = Array<Blog>
