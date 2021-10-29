@@ -24,7 +24,7 @@ class BlogFactory extends Factory
         return [
             'title' => $this->faker->word,
             'body' => [
-                'value' => $this->faker->randomHtml(4),
+                'value' => $this->faker->paragraph(5),
             ]
         ];
     }

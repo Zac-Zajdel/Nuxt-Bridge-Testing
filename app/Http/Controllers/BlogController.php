@@ -45,7 +45,9 @@ class BlogController extends Controller
      */
     public function show(User $user, Blog $blog): Response | JsonResponse
     {
-        return $this->render($blog);
+        $this->authorize('view', $blog);
+
+        return $this->render($blog->load('user'));
     }
 
     /**

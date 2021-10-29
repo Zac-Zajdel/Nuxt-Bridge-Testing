@@ -6,9 +6,9 @@
       class="py-3"
     >
       <card
-        :title="blog.title"
-        description="In this tutorial I will show you how to create simple modals in Tailwind CSS. This utility-based framework allows you to..."
-        @select="select"
+        v-if="blog"
+        :blog="blog"
+        @select="select(blog.id)"
       />
     </div>
   </page-wrapper>
@@ -18,14 +18,18 @@
 import { Blogs } from '@/types/api'
 
 const { $auth, $axios } = useContext()
+const route = useRouter()
 const blogs = ref<Blogs|undefined>(undefined)
 
 onMounted(async () => {
   blogs.value = (await $axios.get(`/user/${$auth.user?.id}/blog`)).data.data
-  console.log('Value: ', blogs.value)
 })
 
-function select () {
-  console.log('Hello world')
+/**
+ * @desc - User has selected the card and we are to go to the details page
+ * @param id - ID of the blog
+ */
+function select (id: number) {
+  route.push(`/blogs/${id}`)
 }
 </script>
