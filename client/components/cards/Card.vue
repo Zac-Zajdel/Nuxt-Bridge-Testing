@@ -20,7 +20,7 @@
         <!-- Brief description -->
         <p
           class="mt-2 text-gray-600 dark:text-gray-300"
-          v-html="blog.body.value"
+          v-html="blog.body"
         />
       </div>
 

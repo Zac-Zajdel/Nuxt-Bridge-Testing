@@ -56,14 +56,14 @@ class BlogControllerTest extends TestCase
 
         // Validate Response Structure
         $result
-            ->assertJson(fn(AssertableJson $json) =>
+            ->assertJson(fn (AssertableJson $json) =>
                 $json->where('status', 'success')
                     ->has('paginate')
                     ->has('benchmark')
                     ->has('query')
                     ->has('data')
-                    ->has('data.0', fn($json) =>
-                        $json->has('id')
+                    ->has('data.0', fn ($blog) =>
+                        $blog->has('id')
                             ->has('title')
                             ->has('user_id')
                             ->has('body')
