@@ -32,6 +32,7 @@
       "nuxt-tailvue",
       "@nuxtjs/color-mode",
       "unplugin-vue2-script-setup/types",
+      "@nuxtjs/dayjs",
     ]
   },
   "vueCompilerOptions": {

@@ -14,12 +14,13 @@ class BlogController extends Controller
      * Returns a list of blogs that belongs to either the user or the community.
      *
      * @return Response|JsonResponse
+     * @throws AuthorizationException
      */
     public function index(User $user): Response | JsonResponse
     {
         return $this->render(
             $this->paginate(
-                Blog::with('user')->orderByDesc('id'),
+                Blog::with(['user', 'badges'])->orderByDesc('updated_at'),
                 10,
             )
         );
@@ -30,6 +31,7 @@ class BlogController extends Controller
      *
      * @param User $user
      * @return Response|JsonResponse
+     * @throws AuthorizationException
      */
     public function store(User $user): Response | JsonResponse
     {
@@ -50,12 +52,13 @@ class BlogController extends Controller
      * @param User $user
      * @param Blog $blog
      * @return Response|JsonResponse
+     * @throws AuthorizationException
      */
     public function show(User $user, Blog $blog): Response | JsonResponse
     {
         $this->authorize('view', $blog);
 
-        return $this->render($blog->load('user'));
+        return $this->render($blog->load(['user', 'badges']));
     }
 
     /**
@@ -65,6 +68,7 @@ class BlogController extends Controller
      * @param User $user
      * @param Blog $blog
      * @return Response|JsonResponse
+     * @throws AuthorizationException
      */
     public function update(Request $request, User $user, Blog $blog): Response | JsonResponse
     {
@@ -83,8 +87,10 @@ class BlogController extends Controller
         $blog->body = $request->body;
         $blog->draft = $request->draft;
         $blog->published_at = !$request->draft ? now() : null;
-        $blog->save();
-
+        if ($blog->isDirty()) {
+            $blog->save();
+        }
+        
         return $this->success('blog.updated', ['name' => $blog->name]);
     }
 

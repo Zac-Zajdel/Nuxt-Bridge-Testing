@@ -12,9 +12,17 @@
           >
             {{ blog.title }}
           </a>
-          <a class="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500">
-            Design
-          </a>
+
+          <div>
+            <!-- Associated Badges -->
+            <a
+              v-for="(badge, index) in blog.badges"
+              :key="index"
+              class="hidden sm:inline-block p-1 mx-1 text-xs font-semibold text-gray-100 transition-colors duration-200 transform bg-gray-600 rounded cursor-pointer hover:bg-gray-500"
+            >
+              {{ badge.name }}
+            </a>
+          </div>
         </div>
 
         <!-- Brief description -->
@@ -35,7 +43,7 @@
         <div class="flex items-center">
           <img class="hidden object-cover w-8 h-8 mx-3 rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80" alt="avatar">
           <a class="text-gray-700 cursor-pointer font-medium dark:text-gray-200">{{ blog.user.name }}</a>
-          <span class="pl-3 text-sm font-normal text-gray-600 dark:text-gray-400">Mar 10, 2019</span>
+          <span class="pl-3 text-sm font-normal text-gray-600 dark:text-gray-400">{{ $dayjs(blog.created_at).format('MM/DD/YYYY') }}</span>
         </div>
       </div>
     </div>

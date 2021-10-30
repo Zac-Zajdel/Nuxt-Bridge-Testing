@@ -22,7 +22,9 @@ const route = useRouter()
 const blogs = ref<Blogs|undefined>(undefined)
 
 onMounted(async () => {
-  blogs.value = (await $axios.get(`/user/${$auth.user?.id}/blog`)).data.data
+  try {
+    blogs.value = (await $axios.get(`/user/${$auth.user?.id}/blog`)).data.data
+  } catch (e) {}
 })
 
 /**
