@@ -80,8 +80,26 @@ class BadgeController extends Controller
      * @return Response|JsonResponse
      * @throws AuthorizationException
      */
-    public function destroy(Request $request, User $user, Badge $badge)
+    public function destroy(Request $request, User $user, Badge $badge): Response | JsonResponse
     {
-        //
+        $this
+        ->option('model', 'required|string|in:blogs')
+        ->option('model_id', [
+            'required',
+            'numeric',
+            Rule::exists($request->model, 'id')->where(fn ($query) =>
+                $query->where('user_id', $user->id)),
+        ])
+        ->verify();
+
+        // Associate badge to specific model relationship
+        match($request->model) {
+            'blogs' => Blog::find($request->model_id)->badges()->detach($badge)
+        };
+
+        return $this->success(
+            'badge.removed',
+            ['name' => $badge->name, 'module' => $request->module]
+        );
     }
 }

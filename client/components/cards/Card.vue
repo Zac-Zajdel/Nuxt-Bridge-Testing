@@ -5,7 +5,6 @@
     <div class="px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 w-full">
       <div class="mt-2">
         <!-- Title and tags -->
-        <!-- justify-between -->
         <div class="flex items-center justify-between">
           <a
             class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline cursor-pointer"
@@ -44,7 +43,7 @@
         <div class="flex items-center">
           <img class="hidden object-cover w-8 h-8 mx-3 rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80" alt="avatar">
           <a class="text-gray-700 cursor-pointer font-medium dark:text-gray-200">{{ blog.user.name }}</a>
-          <span class="pl-3 text-sm font-normal text-gray-600 dark:text-gray-400">{{ blog.created_at }}</span>
+          <span class="pl-3 text-sm font-normal text-gray-600 dark:text-gray-400">{{ $dayjs(blog.created_at).format('MM/DD/YYYY') }}</span>
         </div>
       </div>
     </div>

@@ -136,6 +136,9 @@ export default {
 
     // Doc: https://github.com/acidjazz/nuxt-tailvue
     ['nuxt-tailvue', { all: true }],
+
+    // Doc: https://github.com/nuxt-community/dayjs-module
+    '@nuxtjs/dayjs',
   ],
 
   /**
