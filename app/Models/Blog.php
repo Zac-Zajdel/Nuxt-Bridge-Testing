@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\morphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
@@ -23,5 +24,15 @@ class Blog extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Finds associated badges of a blog
+     *
+     * @return morphToMany
+     */
+    public function badges(): ?morphToMany
+    {
+        return $this->morphToMany(Badge::class, 'badgable');
     }
 }

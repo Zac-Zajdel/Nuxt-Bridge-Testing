@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\BadgeController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Http\Request;
 
@@ -32,4 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // BlogController
     Route::apiResource('/user/{user}/blog', BlogController::class);
+
+    // BadgeController
+    Route::apiResource('/user/{user}/badge', BadgeController::class);
 });

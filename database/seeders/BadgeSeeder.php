@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Badge;
+use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,10 +17,10 @@ class BadgeSeeder extends Seeder
     public function run()
     {
         foreach ($this->badges as $badge) {
-            Badge::factory()->create(['name' => $badge]);
+            $badge = Badge::factory()->create(['name' => $badge]);
+            $blog = Blog::inRandomOrder()->first();
+            $blog->badges()->attach($badge);
         }
-
-        // TODO - Add association to blogs with badgable
     }
 
     private array $badges = [

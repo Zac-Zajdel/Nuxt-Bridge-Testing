@@ -40,5 +40,18 @@ export interface Blog {
 
   // relationships
   user: User
+  badges: Badges
 }
 export type Blogs = Array<Blog>
+
+export interface Badge {
+  id: number
+  name: string
+  created_at: Date
+  updated_at: Date
+  deleted_at: Date|null
+
+  // relationships
+  blogs: Blogs
+}
+export type Badges = Array<Badge>
