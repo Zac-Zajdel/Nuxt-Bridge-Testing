@@ -22,14 +22,9 @@ const route = useRouter()
 const blogs = ref<Blogs|undefined>(undefined)
 
 onMounted(async () => {
-  blogs.value = (await $axios.get(`/user/${$auth.user?.id}/blog`)).data.data
-
-  const result = (await $axios.post(`/user/${$auth.user?.id}/badge`, {
-    name: 'New Name 2',
-    model: 'blogs',
-    model_id: 1,
-  })).data.data
-  console.log(result)
+  try {
+    blogs.value = (await $axios.get(`/user/${$auth.user?.id}/blog`)).data.data
+  } catch (e) {}
 })
 
 /**

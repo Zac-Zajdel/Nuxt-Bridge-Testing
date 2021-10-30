@@ -67,7 +67,7 @@ class BadgeController extends Controller
 
         return $this->success(
             'badge.associated',
-            ['name' => $badge->name, 'module' => $request->module]
+            ['name' => $badge->name, 'model' => Str::singular($request->model)]
         );
     }
 
@@ -99,7 +99,7 @@ class BadgeController extends Controller
 
         return $this->success(
             'badge.removed',
-            ['name' => $badge->name, 'module' => $request->module]
+            ['name' => $badge->name, 'model' => Str::singular($request->model)]
         );
     }
 }
