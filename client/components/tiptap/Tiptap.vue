@@ -1,42 +1,47 @@
 <template>
   <page-wrapper>
-    <div v-if="editor">
+    <div
+      v-if="editor"
+      class="bg-gray-200 rounded-md"
+    >
       <button
-        :class="{ 'is-active': editor.isActive('bold') }"
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
+        :class="{'is-active': editor.isActive('bold')}"
         @click="editor.chain().focus().toggleBold().run()"
       >
-        bold
+        <icon-bold
+          class="h-3 w-3 text-indigo-500"
+        />
       </button>
       <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{ 'is-active': editor.isActive('italic') }"
         @click="editor.chain().focus().toggleItalic().run()"
       >
-        italic
+        <icon-italic
+          class="h-3 w-3 text-indigo-500"
+        />
       </button>
       <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{ 'is-active': editor.isActive('strike') }"
         @click="editor.chain().focus().toggleStrike().run()"
       >
-        strike
+        <icon-strike-through
+          class="h-3 w-3 text-black"
+        />
       </button>
       <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{ 'is-active': editor.isActive('code') }"
         @click="editor.chain().focus().toggleCode().run()"
       >
-        code
+        <icon-code
+          class="h-3 w-3 text-indigo-500"
+        />
       </button>
-      <button @click="editor.chain().focus().unsetAllMarks().run()">
-        clear marks
-      </button>
-      <button @click="editor.chain().focus().clearNodes().run()">
-        clear nodes
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('paragraph') }"
-        @click="editor.chain().focus().setParagraph().run()"
-      >
-        paragraph
-      </button>
+
+      <!-- these need to go into dropdown -->
       <button
         :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
@@ -73,17 +78,24 @@
       >
         h6
       </button>
+
       <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{ 'is-active': editor.isActive('bulletList') }"
         @click="editor.chain().focus().toggleBulletList().run()"
       >
-        bullet list
+        <icon-bulleted-list
+          class="h-3 w-3 text-gray-500"
+        />
       </button>
       <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{ 'is-active': editor.isActive('orderedList') }"
         @click="editor.chain().focus().toggleOrderedList().run()"
       >
-        ordered list
+        <icon-ordered-list
+          class="h-3 w-3 text-gray-500"
+        />
       </button>
       <button
         :class="{ 'is-active': editor.isActive('codeBlock') }"
@@ -92,33 +104,50 @@
         code block
       </button>
       <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{ 'is-active': editor.isActive('blockquote') }"
         @click="editor.chain().focus().toggleBlockquote().run()"
       >
-        blockquote
+        <icon-block-quote
+          class="h-3 w-3 text-gray-500"
+        />
       </button>
-      <button @click="editor.chain().focus().setHorizontalRule().run()">
-        horizontal rule
+      <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
+        @click="editor.chain().focus().setHorizontalRule().run()"
+      >
+        <icon-minus
+          class="h-3 w-3 text-gray-500"
+        />
       </button>
-      <button @click="editor.chain().focus().setHardBreak().run()">
-        hard break
+      <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
+        @click="editor.chain().focus().undo().run()"
+      >
+        <icon-undo
+          class="h-3 w-3 text-gray-500"
+        />
       </button>
-      <button @click="editor.chain().focus().undo().run()">
-        undo
-      </button>
-      <button @click="editor.chain().focus().redo().run()">
-        redo
+      <button
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
+        @click="editor.chain().focus().redo().run()"
+      >
+        <icon-redo
+          class="h-3 w-3 text-gray-500"
+        />
       </button>
     </div>
-    <editor-content
-      :editor="editor"
-    />
+
+    <!-- Actual tiptap rendered component -->
+    <editor-content :editor="editor" />
   </page-wrapper>
 </template>
 
 <script>
 import { Editor, EditorContent } from '@tiptap/vue-2'
 import StarterKit from '@tiptap/starter-kit'
+import Highlight from '@tiptap/extension-highlight'
+import Typography from '@tiptap/extension-typography'
 
 export default {
   components: {
@@ -139,6 +168,8 @@ export default {
     this.editor = new Editor({
       extensions: [
         StarterKit,
+        Highlight,
+        Typography,
       ],
       // content: this.content,
       content: `<h2>
@@ -159,8 +190,8 @@ export default {
           Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
         </p>
         <pre><code class="language-css">body {
-  display: none;
-}</code></pre>
+          display: none;
+        }</code></pre>
         <p>
           I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
         </p>
@@ -182,7 +213,11 @@ export default {
 <style>
 /* Table styling */
 .ProseMirror > * + * {
-  margin-top: 0.75em;
+  margin-top: 0.25em;
+}
+
+.ProseMirror {
+  @apply rounded-md border border-gray-400 p-3;
 }
 
 .ProseMirror code {
@@ -208,12 +243,30 @@ export default {
   white-space: pre-wrap;
   font-size: 0.8rem;
   padding: 0.75rem 1rem;
-  background-color:#e9ecef;
+  background-color: #e9ecef;
   color: #495057;
 }
 
-.ProseMirror ul, ol {
-  padding: 0.1rem;
+.ProseMirror ul {
+  padding: 0, 1rem;
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+}
+
+.ProseMirror ol {
+  padding: 0, 1rem;
+  display: block;
+  list-style-type: decimal;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
 
 .ProseMirror h1 {
@@ -283,12 +336,12 @@ export default {
 
 .ProseMirror blockquote {
   padding-left: 1rem;
-  border-left: 2px solid rgba(#0D0D0D, 0.1);
+  border-left: 2px solid rgba(#0d0d0d, 0.1);
 }
 
 .ProseMirror hr {
   border: none;
-  border-top: 2px solid rgba(#0D0D0D, 0.1);
+  border-top: 2px solid rgba(13,13,13,.1);
   margin: 2rem 0;
 }
 </style>

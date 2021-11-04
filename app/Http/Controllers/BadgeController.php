@@ -61,7 +61,7 @@ class BadgeController extends Controller
         $badge->save();
 
         // Associate badge to specific model relationship
-        match($request->model) {
+        match ($request->model) {
             'blogs' => Blog::find($request->model_id)->badges()->attach($badge)
         };
 
@@ -93,7 +93,7 @@ class BadgeController extends Controller
         ->verify();
 
         // Associate badge to specific model relationship
-        match($request->model) {
+        match ($request->model) {
             'blogs' => Blog::find($request->model_id)->badges()->detach($badge)
         };
 
