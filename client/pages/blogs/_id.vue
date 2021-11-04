@@ -5,6 +5,10 @@
       id="app"
     >
       <client-only>
+        <input
+          type="text"
+          value="Hello world"
+        >
         <tiptap
           v-model="blog.body"
           :content="blog.body"

@@ -2,23 +2,23 @@
   <page-wrapper>
     <div
       v-if="editor"
-      class="bg-gray-200 rounded-md"
+      class="bg-gray-200 rounded-t border-b border-gray-600"
     >
       <button
         class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         :class="{'is-active': editor.isActive('bold')}"
         @click="editor.chain().focus().toggleBold().run()"
       >
-        <icon-bold
+        <icon-text-bold
           class="h-3 w-3 text-indigo-500"
         />
       </button>
       <button
-        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
+        class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded text-gray-300"
         :class="{ 'is-active': editor.isActive('italic') }"
         @click="editor.chain().focus().toggleItalic().run()"
       >
-        <icon-italic
+        <icon-text-italic
           class="h-3 w-3 text-indigo-500"
         />
       </button>
@@ -27,7 +27,7 @@
         :class="{ 'is-active': editor.isActive('strike') }"
         @click="editor.chain().focus().toggleStrike().run()"
       >
-        <icon-strike-through
+        <icon-text-strike-through
           class="h-3 w-3 text-black"
         />
       </button>
@@ -36,7 +36,7 @@
         :class="{ 'is-active': editor.isActive('code') }"
         @click="editor.chain().focus().toggleCode().run()"
       >
-        <icon-code
+        <icon-code-line
           class="h-3 w-3 text-indigo-500"
         />
       </button>
@@ -124,7 +124,7 @@
         class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         @click="editor.chain().focus().undo().run()"
       >
-        <icon-undo
+        <icon-go-back
           class="h-3 w-3 text-gray-500"
         />
       </button>
@@ -132,7 +132,7 @@
         class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
         @click="editor.chain().focus().redo().run()"
       >
-        <icon-redo
+        <icon-go-forward
           class="h-3 w-3 text-gray-500"
         />
       </button>
@@ -217,7 +217,7 @@ export default {
 }
 
 .ProseMirror {
-  @apply rounded-md border border-gray-400 p-3;
+  @apply rounded-b-md border border-gray-400 border-t-0 p-3;
 }
 
 .ProseMirror code {
