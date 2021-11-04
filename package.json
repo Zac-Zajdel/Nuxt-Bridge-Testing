@@ -47,7 +47,7 @@
     "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.20.0",
-    "jest": "^27.0.5",
+    "jest": "^27.3.1",
     "nuxt-typed-vuex": "^0.2.0",
     "postcss": "^8.3.11",
     "ts-jest": "^27.0.7",
