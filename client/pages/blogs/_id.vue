@@ -13,6 +13,7 @@
         </label>
         <input
           id="blog-title"
+          v-model="blog.title"
           type="text"
           name="blog-title"
           autocomplete="email"

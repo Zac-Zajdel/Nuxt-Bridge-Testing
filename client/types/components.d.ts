@@ -1,5 +1,5 @@
 export interface DropdownItem {
   name: string
-  route: string
+  value: string|number
 }
 export type DropdownItems = Array<DropdownItem>

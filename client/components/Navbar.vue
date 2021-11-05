@@ -135,6 +135,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { DropdownItems } from '@/types/components'
 
 interface route {
   name: string
@@ -165,17 +166,17 @@ export default Vue.extend({
       profileNavigation: [
         {
           name: 'Profile',
-          route: 'profile',
+          value: 'profile',
         },
         {
           name: 'Settings',
-          route: 'settings',
+          value: 'settings',
         },
         {
           name: 'Logout',
-          route: 'logout',
+          value: 'logout',
         },
-      ] as routes,
+      ] as DropdownItems,
 
     }
   },

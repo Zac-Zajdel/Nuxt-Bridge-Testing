@@ -10,13 +10,11 @@
     <span
       v-for="item in items"
       :key="item.name"
+      @click="$emit('selected', item.value)"
     >
-      <n-link
-        :to="`/${item.route}`"
-        class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 divide-y divide-y-2"
-      >
+      <span class="block px-3 py-2 rounded-md cursor-pointer text-sm font-medium hover:bg-gray-100 divide-y divide-y-2">
         {{ item.name }}
-      </n-link>
+      </span>
     </span>
   </div>
 </template>

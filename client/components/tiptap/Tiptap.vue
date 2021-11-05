@@ -45,6 +45,8 @@
       <div class="relative inline">
         <div class="inline">
           <button
+            v-on-clickaway="closeDropdown"
+            class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
             @click="showHeadings = true"
           >
             <icon-heading
@@ -58,20 +60,27 @@
             leave-active-class="ease-in duration-100"
             leave-to-class="transform -translate-y-1"
           >
-            <dropdown
+            <div
               v-if="showHeadings"
-              :items="headings"
-              width="w-10"
-            />
+              class="origin-top-right absolute right-0 mt-2 w-10 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="user-menu-button"
+              tabindex="-1"
+            >
+              <button
+                v-for="heading in headings"
+                :key="heading.name"
+                @click="editor.chain().focus().toggleHeading({ level: heading.value }).run()"
+              >
+                <span class="block px-3 py-2 rounded-md cursor-pointer text-sm font-medium hover:bg-gray-100 divide-y divide-y-2">
+                  {{ heading.name }}
+                </span>
+              </button>
+            </div>
           </transition>
         </div>
       </div>
-      <!-- <button
-        :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }"
-        @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
-      >
-        h6
-      </button> -->
 
       <button
         class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
@@ -160,27 +169,27 @@ export default {
       headings: [
         {
           name: 'H1',
-          route: 'H1',
+          value: 1,
         },
         {
           name: 'H2',
-          route: 'H2',
+          value: 2,
         },
         {
           name: 'H3',
-          route: 'H3',
+          value: 3,
         },
         {
           name: 'H4',
-          route: 'H4',
+          value: 4,
         },
         {
           name: 'H5',
-          route: 'H5',
+          value: 5,
         },
         {
           name: 'H6',
-          route: 'H6',
+          value: 6,
         },
       ],
     }
@@ -227,6 +236,12 @@ export default {
 
   beforeUnmount () {
     this.editor.destroy()
+  },
+
+  methods: {
+    closeDropdown () {
+      this.showHeadings = false
+    },
   },
 }
 </script>
