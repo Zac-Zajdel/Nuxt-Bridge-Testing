@@ -51,8 +51,8 @@
 </template>
 
 <script lang="ts" setup>
-import { Blog } from '@/types/api'
 import { PropType } from '@nuxtjs/composition-api'
+import { Blog } from '@/types/api'
 
 defineProps({
   blog: {

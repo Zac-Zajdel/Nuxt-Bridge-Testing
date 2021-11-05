@@ -42,42 +42,36 @@
       </button>
 
       <!-- these need to go into dropdown -->
-      <button
-        :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
-        @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
-      >
-        h1
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }"
-        @click="editor.chain().focus().toggleHeading({ level: 2 }).run()"
-      >
-        h2
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }"
-        @click="editor.chain().focus().toggleHeading({ level: 3 }).run()"
-      >
-        h3
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }"
-        @click="editor.chain().focus().toggleHeading({ level: 4 }).run()"
-      >
-        h4
-      </button>
-      <button
-        :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }"
-        @click="editor.chain().focus().toggleHeading({ level: 5 }).run()"
-      >
-        h5
-      </button>
-      <button
+      <div class="relative inline">
+        <div class="inline">
+          <button
+            @click="showHeadings = true"
+          >
+            <icon-heading
+              class="h-3 w-3 text-gray-500"
+            />
+          </button>
+          <transition
+            mode="out-in"
+            enter-class="transform -translate-y-1"
+            enter-active-class="transition ease-out duration-150"
+            leave-active-class="ease-in duration-100"
+            leave-to-class="transform -translate-y-1"
+          >
+            <dropdown
+              v-if="showHeadings"
+              :items="headings"
+              width="w-10"
+            />
+          </transition>
+        </div>
+      </div>
+      <!-- <button
         :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }"
         @click="editor.chain().focus().toggleHeading({ level: 6 }).run()"
       >
         h6
-      </button>
+      </button> -->
 
       <button
         class="p-2.5 bg-gray-200 hover:bg-gray-300 rounded"
@@ -162,6 +156,33 @@ export default {
   data () {
     return {
       editor: null,
+      showHeadings: false,
+      headings: [
+        {
+          name: 'H1',
+          route: 'H1',
+        },
+        {
+          name: 'H2',
+          route: 'H2',
+        },
+        {
+          name: 'H3',
+          route: 'H3',
+        },
+        {
+          name: 'H4',
+          route: 'H4',
+        },
+        {
+          name: 'H5',
+          route: 'H5',
+        },
+        {
+          name: 'H6',
+          route: 'H6',
+        },
+      ],
     }
   },
   mounted () {

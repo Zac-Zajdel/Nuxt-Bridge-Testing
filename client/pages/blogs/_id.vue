@@ -5,12 +5,20 @@
       id="app"
     >
       <client-only>
+        <label
+          for="blog-title"
+          class="sr-only"
+        >
+          Blog Title
+        </label>
         <input
+          id="blog-title"
           type="text"
-          value="Hello world"
+          name="blog-title"
+          autocomplete="email"
+          class="block sm:mx-6 lg:mx-8 w-3/4 focus:ring-gray-300 focus:border-gray-300 shadow-sm sm:text-sm border-gray-300 rounded-md"
         >
         <tiptap
-          v-model="blog.body"
           :content="blog.body"
         />
       </client-only>
