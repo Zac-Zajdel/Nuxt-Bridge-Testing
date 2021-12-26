@@ -57,9 +57,10 @@
 </template>
 
 <script lang="ts" setup>
-export {}
-const { $auth } = useContext()
+import { useNuxtApp } from '#app'
+const { $auth } = useNuxtApp()
 const $router = useRouter()
+
 const userLogin = ref({
   email: '',
   password: '',

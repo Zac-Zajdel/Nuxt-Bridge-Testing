@@ -1,4 +1,5 @@
 {
+  "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "target": "ES2018",
     "module": "ESNext",
@@ -14,23 +15,12 @@
     "strict": true,
     "noEmit": true,
     "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./*",
-      ],
-      "@/*": [
-        "./*",
-        "./client/*",
-        "src/*",
-      ]
-    },
     "types": [
       "@types/node",
       "@nuxt/types",
       "@nuxtjs/axios",
       "@nuxtjs/auth-next",
       "nuxt-tailvue",
-      "@nuxtjs/color-mode",
       "unplugin-vue2-script-setup/types",
       "@nuxtjs/dayjs",
     ]
