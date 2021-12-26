@@ -1,16 +1,11 @@
+import { defineNuxtConfig } from '@nuxt/bridge'
 
-export default {
+export default defineNuxtConfig({
   /**
   * Nuxt.js root directory
   * See https://nuxtjs.org/api/configuration-srcdir/
   */
   srcDir: 'client/',
-
-  /**
-  * Nuxt target
-  * See https://nuxtjs.org/api/configuration-target
-  */
-  target: 'server',
 
   /**
   * Headers of the page
@@ -27,12 +22,6 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
   },
-
-  /**
-  * Global CSS
-  */
-  css: [
-  ],
 
   /**
   * Plugins to load before mounting the App
@@ -94,30 +83,8 @@ export default {
     // https://tailwindcss.nuxtjs.org/
     '@nuxtjs/tailwindcss',
 
-    // https://typescript.nuxtjs.org/
-    '@nuxt/typescript-build',
-
-    // https://composition-api.nuxtjs.org/
-    '@nuxtjs/composition-api/module',
-
     // https://typed-vuex.roe.dev/
     'nuxt-typed-vuex',
-
-    // https://color-mode.nuxtjs.org/
-    '@nuxtjs/color-mode',
-
-    // https://github.com/antfu/unplugin-auto-import
-    [
-      'unplugin-auto-import/nuxt',
-      {
-        dts: 'client/types/auto-imports.d.ts',
-        imports: [
-          '@vueuse/core',
-          '@nuxtjs/composition-api',
-        ],
-        presetOverriding: true,
-      },
-    ],
   ],
 
   tailwindcss: {
@@ -167,4 +134,4 @@ export default {
   publicRuntimeConfig: {
     apiUrl: process.env.API_URL,
   },
-}
+})

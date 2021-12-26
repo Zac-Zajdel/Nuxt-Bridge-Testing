@@ -51,8 +51,8 @@
 </template>
 
 <script lang="ts" setup>
+import { PropType } from '@vue/runtime-core'
 import { Blog } from '@/types/api'
-import { PropType } from '@nuxtjs/composition-api'
 
 defineProps({
   blog: {

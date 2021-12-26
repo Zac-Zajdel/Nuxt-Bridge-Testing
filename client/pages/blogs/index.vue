@@ -16,8 +16,9 @@
 
 <script lang="ts" setup>
 import { Blogs } from '@/types/api'
+import { useNuxtApp } from '#app'
 
-const { $auth, $axios } = useContext()
+const { $auth, $axios } = useNuxtApp()
 const route = useRouter()
 const blogs = ref<Blogs|undefined>(undefined)
 
