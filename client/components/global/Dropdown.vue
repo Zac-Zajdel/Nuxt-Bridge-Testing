@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from '@nuxtjs/composition-api'
+import { PropType } from '@vue/runtime-core'
 import { DropdownItems } from '@/types/components'
 
 defineProps({
@@ -33,9 +33,6 @@ defineProps({
     default: 'w-48',
   },
 })
-
-// Data
-const isDropdownToggled = ref(false)
 
 onMounted(() => {
   console.log('here')

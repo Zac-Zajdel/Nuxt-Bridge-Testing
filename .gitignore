@@ -18,6 +18,7 @@ yarn-error.log
 _ide_helper.php
 _ide_helper_models.php
 .phpstorm.meta.php
+.output
 
 ## Nuxt.js
 # Created by .ignore support plugin (hsz.mobi)
