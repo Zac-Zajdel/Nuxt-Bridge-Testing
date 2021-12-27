@@ -90,7 +90,7 @@ class BlogController extends Controller
         if ($blog->isDirty()) {
             $blog->save();
         }
-        
+
         return $this->success('blog.updated', ['name' => $blog->name]);
     }
 

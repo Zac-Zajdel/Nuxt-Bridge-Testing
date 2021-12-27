@@ -27,6 +27,12 @@ module.exports = {
     // lets allow content on the same line for short html
     'vue/singleline-html-element-content-newline': 0,
 
+    // Turn off error for singular word components
+    'vue/multi-word-component-names': 'off',
+
+    // Need to import of TipTap modules on tree-shaking
+    'import/no-named-as-default': 0,
+
     // under discussion
     camelcase: 'off',
 

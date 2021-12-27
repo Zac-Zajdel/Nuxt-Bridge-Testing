@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     '@/components/cards',
     '@/components/icons',
     '@/components/table',
+    '@/components/tiptap',
   ],
 
   /**

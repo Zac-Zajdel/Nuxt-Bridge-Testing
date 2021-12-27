@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "types": [
       "@types/node",
+      "@types/components",
       "@nuxt/types",
       "@nuxtjs/axios",
       "@nuxtjs/auth-next",

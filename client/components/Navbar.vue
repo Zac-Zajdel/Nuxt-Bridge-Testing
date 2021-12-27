@@ -90,26 +90,11 @@
               leave-active-class="ease-in duration-100"
               leave-to-class="transform -translate-y-1"
             >
-              <div
+              <dropdown
                 v-if="isUserToggled"
-                class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
-                tabindex="-1"
-              >
-                <span
-                  v-for="nav in profileNavigation"
-                  :key="nav.name"
-                >
-                  <n-link
-                    :to="`/${nav.route}`"
-                    class="block px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-100 divide-y divide-y-2"
-                  >
-                    {{ nav.name }}
-                  </n-link>
-                </span>
-              </div>
+                :items="profileNavigation"
+                width="w-36"
+              />
             </transition>
           </div>
         </div>
@@ -150,6 +135,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { DropdownItems } from '@/types/components'
 
 interface route {
   name: string
@@ -180,17 +166,17 @@ export default Vue.extend({
       profileNavigation: [
         {
           name: 'Profile',
-          route: 'profile',
+          value: 'profile',
         },
         {
           name: 'Settings',
-          route: 'settings',
+          value: 'settings',
         },
         {
           name: 'Logout',
-          route: 'logout',
+          value: 'logout',
         },
-      ] as routes,
+      ] as DropdownItems,
 
     }
   },
