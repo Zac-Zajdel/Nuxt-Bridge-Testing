@@ -151,6 +151,8 @@ import { Editor, EditorContent } from '@tiptap/vue-2'
 import StarterKit from '@tiptap/starter-kit'
 import Highlight from '@tiptap/extension-highlight'
 import Typography from '@tiptap/extension-typography'
+import CodeBlockLowlight from '@tiptap/extension-code-block-lowlight'
+import lowlight from 'lowlight'
 
 export default {
   components: {
@@ -200,6 +202,9 @@ export default {
         StarterKit,
         Highlight,
         Typography,
+        CodeBlockLowlight.configure({
+          lowlight,
+        }),
       ],
       // content: this.content,
       content: `<h2>
@@ -219,8 +224,16 @@ export default {
         <p>
           Isn’t that great? And all of that is editable. But wait, there’s more. Let’s try a code block:
         </p>
-        <pre><code class="language-css">body {
-          display: none;
+        <pre><code class="language-javascript">for (var i = 1; i <= 20; i++)
+        {
+          if (i % 15 == 0)
+            console.log("FizzBuzz");
+          else if (i % 3 == 0)
+            console.log("Fizz");
+          else if (i % 5 == 0)
+            console.log("Buzz");
+          else
+            console.log(i);
         }</code></pre>
         <p>
           I know, I know, this is impressive. It’s only the tip of the iceberg though. Give it a try and click a little bit around. Don’t forget to check the other examples too.
@@ -256,9 +269,69 @@ export default {
   @apply rounded-b-md border border-gray-400 border-t-0 p-3;
 }
 
+.ProseMirror pre {
+  background: #0d0d0d;
+  border-radius: 0.5rem;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
+}
+
 .ProseMirror code {
-  background-color: rgba(#616161, 0.1);
+  background: none;
+  color: inherit;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.ProseMirror .hljs-comment, .hljs-quote {
   color: #616161;
+}
+
+.ProseMirror
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-attribute,
+  .hljs-tag,
+  .hljs-name,
+  .hljs-regexp,
+  .hljs-link,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: #f98181;
+  }
+
+.ProseMirror
+  .hljs-number,
+  .hljs-meta,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-type,
+  .hljs-params {
+    color: #fbbc88;
+  }
+
+.ProseMirror
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-bullet {
+    color: #b9f18d;
+  }
+
+.ProseMirror
+  .hljs-title,
+  .hljs-section {
+    color: #faf594;
+  }
+
+.ProseMirror .hljs-emphasis {
+  font-style: italic;
+}
+
+.ProseMirror .hljs-strong {
+  font-weight: 700;
 }
 
 /* Content styling */
@@ -267,20 +340,6 @@ export default {
 }
 .content h3 {
   margin: 1rem 0 0.5rem;
-}
-
-.content pre {
-  border-radius: 5px;
-  color: #333;
-}
-
-.content code {
-  display: block;
-  white-space: pre-wrap;
-  font-size: 0.8rem;
-  padding: 0.75rem 1rem;
-  background-color: #e9ecef;
-  color: #495057;
 }
 
 .ProseMirror ul {

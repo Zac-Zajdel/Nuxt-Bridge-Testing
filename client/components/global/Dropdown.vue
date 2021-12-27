@@ -33,8 +33,4 @@ defineProps({
     default: 'w-48',
   },
 })
-
-onMounted(() => {
-  console.log('here')
-})
 </script>

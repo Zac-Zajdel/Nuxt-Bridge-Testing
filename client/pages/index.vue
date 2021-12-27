@@ -39,7 +39,6 @@ export default Vue.extend({
   },
   mounted () {
     this.get(this.count)
-    console.log(this.$auth)
   },
   methods: {
     async get (count: number): Promise<void> {
