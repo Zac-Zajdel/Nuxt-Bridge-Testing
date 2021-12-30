@@ -3,11 +3,14 @@
     class="flex flex-col justify-between col-span-8 overflow-hidden transition-shadow duration-500 rounded-none sm:border theme-bg theme-shadow theme-border hover:shadow-xl ease dark:bg-dark-900 sm:rounded-xl xl:col-span-8"
   >
     <div class="px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 w-full">
-      <div class="mt-2">
+      <div
+        class="mt-2 cursor-pointer"
+        @click="selectCard"
+      >
         <!-- Title and tags -->
         <div class="flex items-center justify-between">
           <a
-            class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200 hover:underline cursor-pointer"
+            class="text-2xl font-bold text-gray-700 dark:text-white hover:text-gray-600 dark:hover:text-gray-200"
             @click="selectCard"
           >
             {{ blog.title }}
@@ -33,17 +36,16 @@
       </div>
 
       <div class="flex items-center justify-between mt-4">
-        <a
-          class="text-blue-600 dark:text-blue-400 hover:underline cursor-pointer"
-          @click="selectCard"
-        >
-          Read more
-        </a>
-
-        <div class="flex items-center">
-          <img class="hidden object-cover w-8 h-8 mx-3 rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80" alt="avatar">
+        <div class="flex items-center py-2">
+          <img class="hidden object-cover w-8 h-8 mr-3 rounded-full sm:block" src="https://images.unsplash.com/photo-1502980426475-b83966705988?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=40&q=80" alt="avatar">
           <a class="text-gray-700 cursor-pointer font-medium dark:text-gray-200">{{ blog.user.name }}</a>
           <span class="pl-3 text-sm font-normal text-gray-600 dark:text-gray-400">{{ $dayjs(blog.created_at).format('MM/DD/YYYY') }}</span>
+        </div>
+
+        <div class="flex items-center hover:bg-gray-200 p-1 rounded-md cursor-pointer">
+          <icon-bell
+            class="w-5 h-5"
+          />
         </div>
       </div>
     </div>

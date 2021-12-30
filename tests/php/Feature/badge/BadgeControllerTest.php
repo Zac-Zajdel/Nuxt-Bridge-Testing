@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\blog;
+namespace Tests\Feature\badge;
 
 use App\Models\Badge;
 use App\Models\Blog;
