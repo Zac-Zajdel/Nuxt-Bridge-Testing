@@ -1,0 +1,18 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    paths:
+        - app
+
+    # The level 9 is the highest level
+    level: 6
+
+    ignoreErrors:
+        - '#Call to method [^\s]+\(\) on an unknown class acidjazz\\metapi\\MetApi#'
+        - '#Match expression does not handle remaining value: [^\s]+#'
+
+    excludePaths:
+        - ./*/*/FileToBeExcluded.php
+
+    checkMissingIterableValueType: false

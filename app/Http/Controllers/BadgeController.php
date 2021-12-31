@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use App\Models\Badge;
 use App\Models\Blog;
 use App\Models\User;

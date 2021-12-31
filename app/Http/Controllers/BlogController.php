@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -13,6 +14,7 @@ class BlogController extends Controller
     /**
      * Returns a list of blogs that belongs to either the user or the community.
      *
+     * @param User $user
      * @return Response|JsonResponse
      * @throws AuthorizationException
      */
@@ -91,7 +93,7 @@ class BlogController extends Controller
             $blog->save();
         }
 
-        return $this->success('blog.updated', ['name' => $blog->name]);
+        return $this->success('blog.updated', ['name' => $blog->title]);
     }
 
     /**
@@ -100,12 +102,13 @@ class BlogController extends Controller
      * @param User $user
      * @param Blog $blog
      * @return Response|JsonResponse
+     * @throws AuthorizationException
      */
     public function destroy(User $user, Blog $blog): Response | JsonResponse
     {
         $this->authorize('update', $blog);
 
-        $name = $blog->name;
+        $name = $blog->title;
         $blog->delete();
 
         return $this->success('blog.deleted', ['name' => $name]);
