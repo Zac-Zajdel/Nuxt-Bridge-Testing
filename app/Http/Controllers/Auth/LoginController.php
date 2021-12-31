@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function login(Request $request)
+    public function login(Request $request): void
     {
         if (!auth()->attempt($request->only('email', 'password'))) {
             throw new AuthenticationException();
