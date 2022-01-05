@@ -30,7 +30,7 @@
     "core-js": "^3.20.0",
     "nuxt-edge": "latest",
     "nuxt-tailvue": "^1.0.95",
-    "tv-button": "1.0.25",
+    "tv-button": "2.0.7",
     "tv-modal": "1.0.24",
     "vue-clickaway": "^2.2.2"
   },
