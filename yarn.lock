@@ -13904,20 +13904,15 @@ tunnel@0.0.6:
   resolved "https://registry.yarnpkg.com/tunnel/-/tunnel-0.0.6.tgz#72f1314b34a5b192db012324df2cc587ca47f92c"
   integrity sha512-1h/Lnq9yajKY2PEbBadPXj3VxsDDu844OnaAo52UVmIzIvwwtBPIuNvkjuzBlTWpfJyUbG3ez0KSBibQkj4ojg==
 
-tv-button@1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-1.0.25.tgz#ddcfe4a470eebc2afe909ea44593db6d2b7178a8"
-  integrity sha512-e7e4LXHY/P3ug7i4/PwLHE1gZzRwp14C4vnHJQ2uQjokrFH2AoCdbVwCsmZEWT3sfa2dB1Vxcx8IMZfLVTR/7g==
+tv-button@2.0.7, tv-button@latest:
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-2.0.7.tgz#108f4d521959d5b2a5df67bfabd4670544419451"
+  integrity sha512-qd5zCM2yKbY/5AkHOSX7OWqa/bQcKZMXU8cPTAf0xdKYPuiMH618luSw5Ope4vZMj7j3fCcLwumfCp+lUkWq/g==
 
 tv-button@^1.0.7:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-1.2.2.tgz#6392cd88fae4a879e3c68d3b08604f24dcb5c6fe"
   integrity sha512-hiOPIBuMt7ID6BcqG1umWWpLlnOJVnyZPzNHiWXrtGhoIECGf+z96ub7o07zer+C7iZg+Ei0TWt8xB0zQVbL4A==
-
-tv-button@latest:
-  version "2.0.7"
-  resolved "https://registry.yarnpkg.com/tv-button/-/tv-button-2.0.7.tgz#108f4d521959d5b2a5df67bfabd4670544419451"
-  integrity sha512-qd5zCM2yKbY/5AkHOSX7OWqa/bQcKZMXU8cPTAf0xdKYPuiMH618luSw5Ope4vZMj7j3fCcLwumfCp+lUkWq/g==
 
 tv-icon@^1.0.1, tv-icon@latest:
   version "1.0.24"
