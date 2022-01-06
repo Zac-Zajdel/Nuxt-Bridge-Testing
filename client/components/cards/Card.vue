@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex flex-col justify-between col-span-8 overflow-hidden transition-shadow duration-500 rounded-none sm:border theme-bg theme-shadow theme-border hover:shadow-xl ease dark:bg-dark-900 sm:rounded-xl xl:col-span-8"
-  >
+  <div class="flex flex-col justify-between col-span-8 overflow-hidden transition-shadow duration-500 rounded-none sm:border theme-bg theme-shadow theme-border hover:shadow-xl ease dark:bg-dark-900 sm:rounded-xl xl:col-span-8">
     <div class="px-8 py-4 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800 w-full">
       <div
         class="mt-2 cursor-pointer"

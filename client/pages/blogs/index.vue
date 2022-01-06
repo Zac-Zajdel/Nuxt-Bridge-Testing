@@ -1,17 +1,30 @@
 <template>
-  <page-wrapper>
-    <div
-      v-for="(blog, index) in blogs"
-      :key="index"
-      class="py-3"
-    >
-      <card
-        v-if="blog"
-        :blog="blog"
-        @select="select(blog.id)"
-      />
-    </div>
-  </page-wrapper>
+  <div v-if="blogs && blogs.length">
+    <page-wrapper>
+      <div
+        v-for="(blog, index) in blogs"
+        :key="index"
+        class="py-3"
+      >
+        <card
+          v-if="blog"
+          :blog="blog"
+          @select="select(blog.id)"
+        />
+      </div>
+    </page-wrapper>
+  </div>
+  <div v-else>
+    <page-wrapper>
+      <div
+        v-for="index in [1, 2, 3, 4, 5]"
+        :key="index"
+        class="py-3"
+      >
+        <card-skeleton />
+      </div>
+    </page-wrapper>
+  </div>
 </template>
 
 <script lang="ts" setup>
