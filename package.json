@@ -26,7 +26,7 @@
     "@tiptap/extension-highlight": "^2.0.0-beta.27",
     "@tiptap/extension-typography": "^2.0.0-beta.17",
     "@tiptap/starter-kit": "^2.0.0-beta.132",
-    "@tiptap/vue-2": "^2.0.0-beta.62",
+    "@tiptap/vue-2": "^2.0.0-beta.84",
     "core-js": "^3.20.0",
     "nuxt-edge": "latest",
     "nuxt-tailvue": "^1.0.95",
